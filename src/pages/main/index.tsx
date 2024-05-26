@@ -1,8 +1,8 @@
-import Layout from "@layout";
+import { Products } from "@sections";
 const index = () => {
   return (
     <>
-      <Layout />
+      <Products />
     </>
   );
 };

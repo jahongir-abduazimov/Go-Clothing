@@ -1,10 +1,12 @@
-import { Products } from "@sections"
+import { Outlet } from "react-router-dom";
 const index = () => {
   return (
     <>
-        <Products />
+      <main>
+        <Outlet />
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;

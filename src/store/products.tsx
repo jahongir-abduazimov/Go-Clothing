@@ -11,6 +11,14 @@ const useProductStore = create<ProductStore>(() => ({
       console.error(error);
     }
   },
+  getProduct: async (id) => {
+    try {
+      const response = await Products.get_product(id);
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }));
 
 export default useProductStore;
