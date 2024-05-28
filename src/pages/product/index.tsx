@@ -53,7 +53,7 @@ const index = () => {
             />
           </div>
           <div className="w-[50%] px-3">
-            <p className="text-[#04BEEC] font-semibold text-[35px] mb-3">
+            <p className="text-[#1976D2] font-semibold text-[35px] mb-3">
               {data.product_name}
             </p>
             <p className="text-[18px] border-b-[1px] border-b-[#9ca3afa0] pb-4 mb-8">
@@ -78,7 +78,7 @@ const index = () => {
                 </IconButton>
               </div>
               <div>
-                <p className="text-[#04BEEC] font-semibold text-[20px]">
+                <p className="text-[#1976D2] font-semibold text-[20px]">
                   Only {data.count} left
                 </p>
               </div>
@@ -98,11 +98,11 @@ const index = () => {
                 )}
               </div>
               <div>
-                <Button sx={{border: "2px solid #04BEEC", paddingLeft: "40px", paddingRight: '40px', display: "flex", gap: "8px"}}>
-                  <span className="text-[#04BEEC] text-[20px] capitalize font-semibold">
+                <Button sx={{border: "2px solid #1976D2", paddingLeft: "40px", paddingRight: '40px', display: "flex", gap: "8px"}}>
+                  <span className="text-[#1976D2] text-[20px] capitalize font-semibold">
                     Purchase
                   </span>
-                  <ShoppingCartOutlinedIcon className="text-[#04BEEC]" />
+                  <ShoppingCartOutlinedIcon className="text-[#1976D2]" />
                 </Button>
               </div>
             </div>
@@ -113,31 +113,31 @@ const index = () => {
               <ul>
                 <li>
                   <p className="text-[18px] mb-2">
-                    <span className="text-[#04BEEC]">Made in: </span>
+                    <span className="text-[#1976D2]">Made in: </span>
                     {data.made_in}
                   </p>
                 </li>
                 <li>
                   <p className="text-[18px] mb-2">
-                    <span className="text-[#04BEEC]">Color: </span>
+                    <span className="text-[#1976D2]">Color: </span>
                     {data.color}
                   </p>
                 </li>
                 <li>
                   <p className="text-[18px] mb-2">
-                    <span className="text-[#04BEEC]">Size: </span>
+                    <span className="text-[#1976D2]">Size: </span>
                     {data.size}
                   </p>
                 </li>
                 <li>
                   <p className="text-[18px] mb-2">
-                    <span className="text-[#04BEEC]">Max age: </span>
+                    <span className="text-[#1976D2]">Max age: </span>
                     {data.age_max}
                   </p>
                 </li>
                 <li>
                   <p className="text-[18px] mb-2">
-                    <span className="text-[#04BEEC]">Max min: </span>
+                    <span className="text-[#1976D2]">Max min: </span>
                     {data.age_min}
                   </p>
                 </li>

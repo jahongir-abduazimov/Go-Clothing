@@ -4,7 +4,9 @@ import useProductStore from "../../store/products";
 import { useEffect, useState } from "react";
 const index = () => {
   const { getProducts } = useProductStore()
+  const {getLikedProducts} = useProductStore()
   const [data, setData] = useState([])
+  const [liked, setLiked] = useState([])
   const [params] = useState({
     page: 1,
     limit: 8,
@@ -14,8 +16,15 @@ const index = () => {
     const response:any = await getProducts(params)
     setData(response?.data?.products);
   }
+  const getLiked = async () => {
+    const response:any = await getLikedProducts()
+    setLiked(response?.data?.products.map((item:any) => {
+      return item.product_id;
+    }));
+  }
   useEffect(()=> {
     getData()
+    getLiked()
   }, [])
   return (
     <>
@@ -25,7 +34,7 @@ const index = () => {
           <div className="grid gap-x-3 justify-center grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-y-10 lg:grid-cols-4">
           {
             data?.map((item, index) => {
-              return <Card key={index} data={item} />;
+              return <Card liked={liked} key={index} data={item} />;
             })
           }
           </div>
