@@ -23,13 +23,16 @@ const index = () => {
             />
           </div>
           <div className="flex items-center gap-4">
-            <Button onClick={()=>navigate("/signin")} sx={{ display: "flex", gap: "7px", padding: "10px" }}>
+            <Button
+              onClick={() => navigate("/signin")}
+              sx={{ display: "flex", gap: "7px", padding: "10px" }}
+            >
               <LoginOutlinedIcon className="w-[30px] h-[30px] text-[#1976D2]" />
               <span className="text-[#1976D2] capitalize font-medium">
                 Login
               </span>
             </Button>
-            <Button sx={{ display: "flex", gap: "7px", padding: "10px" }}>
+            <Button onClick={() => navigate("/liked-products")} sx={{ display: "flex", gap: "7px", padding: "10px" }}>
               <FavoriteBorderOutlinedIcon className="w-[30px] h-[30px] text-[#1976D2]" />
               <span className="text-[#1976D2] capitalize font-medium">
                 Liked

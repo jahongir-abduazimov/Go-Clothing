@@ -21,7 +21,6 @@ const index = () => {
   const handleSubmit = async (values: Signin) => {
     try {
       const response = await auth.sign_in(values);
-      console.log(response);
       if (response.status === 200) {
         navigate("/");
         setDataToCookie("access_token",response.data.access_token);

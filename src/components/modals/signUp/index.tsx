@@ -55,7 +55,7 @@ const index = ({ open, handleClose, email }: IModalProp) => {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (

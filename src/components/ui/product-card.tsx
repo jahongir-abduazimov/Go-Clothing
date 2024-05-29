@@ -6,19 +6,34 @@ import { CardActionArea } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useNavigate } from "react-router-dom";
 import useProductStore from "../../store/products";
-// import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import { useEffect, useState } from "react";
 
 export default function ActionAreCard({ data, liked }: any) {
   const navigate = useNavigate();
   const { likeProduct } = useProductStore();
-  // const [liked, setLiked]: any = useState(false);
+  const [like, setLike] = useState(false)
   const handleClick = (id: string) => {
     navigate(`/product/${id}`);
   };
-  const handleChange = async(id: string) => {
-    likeProduct(id);
+  const handleChange = async (id: string) => {
+    try {
+      const response: any = await likeProduct(id);
+      if (response.status === 201) {
+        setLike(response.data)
+      }
+    } catch (error) {
+      console.error(error);
+      navigate("/signin");
+    }
   };
-  console.log(liked);
+  useEffect(()=> {
+    if(liked.includes(data.product_id)){
+      setLike(true)
+    }else{
+      setLike(false)
+    }
+  }, [liked])
   return (
     <>
       <Card sx={{ maxWidth: 255, position: "relative" }}>
@@ -53,10 +68,19 @@ export default function ActionAreCard({ data, liked }: any) {
             </div>
           </CardContent>
         </CardActionArea>
-        <FavoriteBorderOutlinedIcon
-          sx={{ position: "absolute", top: 15, right: 15, color: "#1976D2", cursor: "pointer" }}
-          onClick={() => handleChange(data.product_id)}
-        />
+        {
+          like? (
+            <FavoriteOutlinedIcon
+              sx={{ position: "absolute", top: 15, right: 15, color: "#1976D2", cursor: "pointer" }}
+              onClick={() => handleChange(data.product_id)}
+            />
+          ) : (
+            <FavoriteBorderOutlinedIcon
+              sx={{ position: "absolute", top: 15, right: 15, color: "#1976D2", cursor: "pointer" }}
+              onClick={() => handleChange(data.product_id)}
+            />
+          )
+        }
       </Card>
     </>
   );
