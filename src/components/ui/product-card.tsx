@@ -2,17 +2,18 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, IconButton } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useNavigate } from "react-router-dom";
 import useProductStore from "../../store/products";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import { useEffect, useState } from "react";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 
 export default function ActionAreCard({ data, liked }: any) {
   const navigate = useNavigate();
   const { likeProduct } = useProductStore();
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(false);
   const handleClick = (id: string) => {
     navigate(`/product/${id}`);
   };
@@ -20,20 +21,20 @@ export default function ActionAreCard({ data, liked }: any) {
     try {
       const response: any = await likeProduct(id);
       if (response.status === 201) {
-        setLike(response.data)
+        setLike(response.data);
       }
     } catch (error) {
       console.error(error);
       navigate("/signin");
     }
   };
-  useEffect(()=> {
-    if(liked.includes(data.product_id)){
-      setLike(true)
-    }else{
-      setLike(false)
+  useEffect(() => {
+    if (liked.includes(data.product_id)) {
+      setLike(true);
+    } else {
+      setLike(false);
     }
-  }, [liked])
+  }, [liked]);
   return (
     <>
       <Card sx={{ maxWidth: 255, position: "relative" }}>
@@ -54,7 +55,9 @@ export default function ActionAreCard({ data, liked }: any) {
               {data.product_name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {data.description.slice(0, 30)}...
+              {data.description.length > 30
+                ? data.description.slice(0, 30) + "..."
+                : data.description}
             </Typography>
             <div className="mt-2">
               {data.discount > 0 ? (
@@ -68,18 +71,48 @@ export default function ActionAreCard({ data, liked }: any) {
             </div>
           </CardContent>
         </CardActionArea>
+        {like ? (
+          <FavoriteOutlinedIcon
+            sx={{
+              position: "absolute",
+              top: 12,
+              right: 12,
+              color: "#1976D2",
+              cursor: "pointer",
+              fontSize: "27px",
+            }}
+            onClick={() => handleChange(data.product_id)}
+          />
+        ) : (
+          <FavoriteBorderOutlinedIcon
+            sx={{
+              position: "absolute",
+              top: 12,
+              right: 12,
+              color: "#1976D2",
+              cursor: "pointer",
+              fontSize: "27px",
+            }}
+            onClick={() => handleChange(data.product_id)}
+          />
+        )}
+        <IconButton
+          sx={{
+            position: "absolute",
+            bottom: 12,
+            right: 12,
+            color: "#1976D2",
+            cursor: "pointer",
+          }}
+        >
+          <AddShoppingCartOutlinedIcon />
+        </IconButton>
         {
-          like? (
-            <FavoriteOutlinedIcon
-              sx={{ position: "absolute", top: 15, right: 15, color: "#1976D2", cursor: "pointer" }}
-              onClick={() => handleChange(data.product_id)}
-            />
-          ) : (
-            <FavoriteBorderOutlinedIcon
-              sx={{ position: "absolute", top: 15, right: 15, color: "#1976D2", cursor: "pointer" }}
-              onClick={() => handleChange(data.product_id)}
-            />
-          )
+          data.discount > 0 ? (
+            <div className="w-[50px] rounded text-center bg-[#1976D2] absolute top-0 left-0">
+              <p className="text-[#fff]">-{data.discount}%</p>
+            </div>
+          ) : null
         }
       </Card>
     </>

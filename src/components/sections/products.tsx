@@ -26,7 +26,7 @@ const index = () => {
   }, [])
   return (
     <>
-      <section className="pt-[50px] pb-[60px]">
+      <section className="pt-[50px]">
         <Container>
           <p className="text-[35px] font-semibold mb-5">Products</p>
           <div className="grid gap-x-3 justify-center grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-y-10 lg:grid-cols-4">

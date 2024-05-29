@@ -7,6 +7,7 @@ import { Button, CardMedia, IconButton } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const index = () => {
   const { getProduct } = useProductStore();
@@ -97,12 +98,18 @@ const index = () => {
                   ""
                 )}
               </div>
-              <div>
+              <div className="flex items-center gap-4">
                 <Button sx={{border: "2px solid #1976D2", paddingLeft: "40px", paddingRight: '40px', display: "flex", gap: "8px"}}>
                   <span className="text-[#1976D2] text-[20px] capitalize font-semibold">
                     Purchase
                   </span>
                   <ShoppingCartOutlinedIcon className="text-[#1976D2]" />
+                </Button>
+                <Button sx={{border: "2px solid #1976D2", paddingLeft: "40px", paddingRight: '40px', display: "flex", gap: "8px"}}>
+                  <span className="text-[#1976D2] text-[20px] capitalize font-semibold">
+                    Add to cart
+                  </span>
+                  <AddShoppingCartIcon className="text-[#1976D2]" />
                 </Button>
               </div>
             </div>
