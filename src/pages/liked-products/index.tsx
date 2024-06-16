@@ -14,7 +14,7 @@ const index = () => {
   }
   useEffect(()=> {
     getLiked()
-  }, [])
+  }, [liked])
   return (
     <>
       <section className="pt-[50px] pb-[60px]">

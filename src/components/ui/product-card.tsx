@@ -107,13 +107,11 @@ export default function ActionAreCard({ data, liked }: any) {
         >
           <AddShoppingCartOutlinedIcon />
         </IconButton>
-        {
-          data.discount > 0 ? (
-            <div className="w-[50px] rounded text-center bg-[#1976D2] absolute top-0 left-0">
-              <p className="text-[#fff]">-{data.discount}%</p>
-            </div>
-          ) : null
-        }
+        {data.discount > 0 ? (
+          <div className="w-[50px] rounded text-center bg-[#1976D2] absolute top-0 left-0">
+            <p className="text-[#fff]">-{data.discount}%</p>
+          </div>
+        ) : null}
       </Card>
     </>
   );

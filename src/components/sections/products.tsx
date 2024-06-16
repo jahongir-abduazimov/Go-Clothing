@@ -9,7 +9,7 @@ const index = () => {
   const [liked, setLiked]:any = useState([])
   const [params] = useState({
     page: 1,
-    limit: 8,
+    limit: 16,
     name: "",
   })
   const getData = async () => {
